@@ -1,0 +1,16 @@
+- hosts: all
+  gather_facts: true
+  vars:
+    ansible_connection: local
+    ansible_user: semaphore
+    ansible_become: no
+  pre_tasks:
+    - name: checkout semaphore globals
+      ansible.builtin.git:
+        repo: git@github.com:peedy2495/sem_proxyCaching.git
+        dest: /tmp/semaphore/.ansible/roles/sem_proxyCaching
+        accept_hostkey: true
+        clone: true
+        force: true
+        update: true
+        

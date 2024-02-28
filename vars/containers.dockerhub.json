@@ -1,0 +1,4 @@
+[
+  { "image": "library/mysql", "tag": "latest" },
+  { "image": "library/ubuntu", "tag": "22.04" }
+]

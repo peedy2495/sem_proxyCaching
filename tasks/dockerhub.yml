@@ -1,0 +1,10 @@
+- name: load dockerhub image list
+  ansible.builtin.set_fact:
+    dockerhubImages: "{{ lookup('file','vars/containers.dockerhub.json') | from_json }}"
+  
+- name: pull docker images
+  debug:
+    msg: "{{ item.image }}:{{ item.tag }}"
+  loop: "{{ nexusRepos }}"
+  loop_control:
+    label: "{{ item.image }}:{{ item.tag }}"  
