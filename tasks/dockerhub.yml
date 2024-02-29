@@ -9,7 +9,7 @@
 
 - name: Display extracted subentries
   debug:
-    msg: "Registry: {{ item.key }} - Image: {{ subitem.image }}:{{ subitem.tag }}"
+    msg: "Registry: {{ item | | to_nice_json }} - Image: {{ subitem.image }}:{{ subitem.tag }}"
   loop: "{{ registry_images }}"
   loop_control:
         loop_var: item
