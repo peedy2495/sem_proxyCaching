@@ -5,6 +5,6 @@
 - name: Extract registry and image names
   debug:
     msg: "{{ item.registry }} \n {{ item.images }}"
-  loop: "{{ json_content | flatten(levels=1) }}"
+  loop: "{{ json_content }}"
   loop_control:
     loop_var: item
