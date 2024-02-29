@@ -1,11 +1,11 @@
 - name: load image list
   ansible.builtin.set_fact:
-    images: "{{ lookup('file','vars/containers.dockerhub.json') | from_json }}"
+    json_content: "{{ lookup('file','vars/containers.dockerhub.json') | from_json }}"
 
 - name: Extract registry and image names
   debug:
-    msg: "{{ item.registry }}/ {{ item.image }}"
-  loop: "{{ images }}"
+    msg: "{{ item.registry }}/ {{ image.image }}"
+  loop: "{{ json_content }}"
   loop_control:
     loop_var: item
-  run_once: true
+  with_items: "{{ item.images }}"
