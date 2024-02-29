@@ -7,7 +7,7 @@
   },
   {
     "quai": [
-      { "image": "prometheus / prometheus", "tag": "v2.50.1" }
+      { "image": "prometheus/prometheus", "tag": "v2.50.1" }
     ]
   }
 ]
