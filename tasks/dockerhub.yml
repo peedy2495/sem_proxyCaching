@@ -3,8 +3,8 @@
     json_content: "{{ lookup('file','vars/containers.dockerhub.json') | from_json }}"
 
 - debug:
-    msg: "{{ item }}"
-    loop: "{{ json_content.registry }}"
+    msg: "{{ item.registry }}"
+    loop: "{{ json_content }}"
 
 #- name: Extract registry and image names
 #  debug:
