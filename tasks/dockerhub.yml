@@ -12,4 +12,4 @@
     msg: "Registry: {{ item.key }} - Image: {{ subitem.image }}:{{ subitem.tag }}"
   loop: "{{ registry_images }}"
   loop_control:
-        loop_var: subitem
+        loop_var: item
