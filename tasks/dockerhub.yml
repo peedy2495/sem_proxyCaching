@@ -6,5 +6,3 @@
   debug:
     msg: "{{ item.registry }}"
   loop: "{{ json_content }}"
-  loop_control:
-    loop_var: item
