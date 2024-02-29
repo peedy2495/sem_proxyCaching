@@ -5,14 +5,7 @@
 - name: Extract registry and image names
   debug:
     msg: "{{ item.registry }}/ {{ item.image }}"
-  loop: "{{ images }}"
+  loop: "{{ json_content }}"
   loop_control:
     loop_var: item
-  with_items:
-    - "{{ item.images }}"
-  register: result
-  
-- name: Output concatenated registry and image names
-  debug:
-    msg: "{{ item.item.registry }}/ {{ item.item.image }}"
-  with_items: "{{ result.results }}"
+  run_once: true
