@@ -5,6 +5,6 @@
 - name: pull docker images
   debug:
     msg: "{{ item.image }}:{{ item.tag }}"
-  loop: "{{ dockerhubImages }}"
+  loop: "{{ dockerhubImages.dockerhub }}"
   loop_control:
     label: "{{ item.image }}:{{ item.tag }}"  

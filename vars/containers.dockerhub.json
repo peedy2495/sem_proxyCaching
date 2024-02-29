@@ -1,4 +1,13 @@
 [
-  { "image": "library/mysql", "tag": "latest" },
-  { "image": "library/ubuntu", "tag": "22.04" }
+  {
+    "dockerhub": [
+      { "image": "library/postgresql", "tag": "14" },
+      { "image": "library/ubuntu", "tag": "22.04" }
+    ]
+  },
+  {
+    "quai": [
+      { "image": "prometheus / prometheus", "tag": "v2.50.1" }
+    ]
+  }
 ]
