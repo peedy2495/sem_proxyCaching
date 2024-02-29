@@ -2,15 +2,9 @@
   ansible.builtin.set_fact:
     json_content: "{{ lookup('file','vars/containers.dockerhub.json') }}"
 
-- debug:
+- name: Extract registry and image names
+  debug:
     msg: "{{ item.registry }}"
-    loop: "{{ json_content }}"
-    loop_control:
-      loop_var: item
-
-#- name: Extract registry and image names
-#  debug:
-#    msg: "{{ item.registry }}/ {{ item.image }}"
-#  loop: "{{ json_content | flatten(levels=2) }}"
-#  loop_control:
-#    loop_var: item
+  loop: "{{ json_content | flatten(levels=1) }}"
+  loop_control:
+    loop_var: item
