@@ -1,15 +1,11 @@
 - name: load image list
   ansible.builtin.set_fact:
     images: "{{ lookup('file','vars/containers.dockerhub.json') | from_json }}"
-  
-- name: retrieve all registries
-  set_fact:
-       registries: "{{ images | dict2items }}"
 
 - name: prepare images lists
   set_fact:
     registry_images: "{{ registry_images | default([]) + item | dict2items }}"
-  loop: "{{ registries }}"
+  loop: "{{ images }}"
 
 - name: Display extracted subentries
   debug:
