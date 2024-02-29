@@ -1,10 +1,16 @@
-{
-  "dockerhub": [
-    { "image": "library/postgresql", "tag": "14" },
-    { "image": "library/ubuntu", "tag": "22.04" }
-  ],
-  "quai": [
-    { "image": "prometheus/prometheus", "tag": "v2.50.1" },
-    { "image": "freeipa/freeipa-server", "tag": "rocky-9" }
-  ]
-}
+[
+  {
+    "registry": "dockerhub",
+    "images": [
+      { "image": "library/postgresql:14" },
+      { "image": "library/ubuntu:22.04" }
+    ]
+  },
+  {
+    "registry": "quai",
+    "images": [
+      { "image": "prometheus/prometheus:v2.50.1" },
+      { "image": "freeipa/freeipa-server:rocky-9" }
+    ]
+  }
+]
