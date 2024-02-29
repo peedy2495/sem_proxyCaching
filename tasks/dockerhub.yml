@@ -1,4 +1,4 @@
-- name: load dockerhub image list
+- name: load image list
   ansible.builtin.set_fact:
     images: "{{ lookup('file','vars/containers.dockerhub.json') | b64decode | from_json }}"
   
