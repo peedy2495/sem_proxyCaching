@@ -4,10 +4,12 @@
 
 - name: prepare images lists
   set_fact:
-    registry_images: "{{ registry_images | default([]) + item | dict2items }}"
+    registry_images: "{{ registry_images | default([]) + item}}"
   loop: "{{ images }}"
 
 - name: Display extracted subentries
   debug:
-    msg: "Registry: {{ item.key }} - Image: {{ item.value.image }}:{{ item.value.tag }}"
+    msg: "Registry: {{ item.key }} - Image: {{ subitem.image }}:{{ subitem.tag }}"
   loop: "{{ registry_images }}"
+  loop_control:
+        loop_var: subitem
