@@ -8,7 +8,7 @@
 
 - name: prepare images lists
   set_fact:
-    registry_images: "{{ registry_images | default({}) | combine({item.key: item.value}) }}"
+    registry_images: "{{ registry_images | default([]) + item | dict2items }}"
   loop: "{{ registries }}"
 
 - name: Display extracted subentries
