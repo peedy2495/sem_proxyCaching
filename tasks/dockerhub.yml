@@ -3,11 +3,12 @@
     json_content: "{{ lookup('file','vars/containers.dockerhub.json') | from_json }}"
 
 - debug:
-    msg: "{{ json_content | flatten(levels=1) }}"
+    msg: "{{ item }}"
+    loop: "{{ json_content.registry }}"
 
-- name: Extract registry and image names
-  debug:
-    msg: "{{ item.registry }}/ {{ item.image }}"
-  loop: "{{ json_content | flatten(levels=2) }}"
-  loop_control:
-    loop_var: item
+#- name: Extract registry and image names
+#  debug:
+#    msg: "{{ item.registry }}/ {{ item.image }}"
+#  loop: "{{ json_content | flatten(levels=2) }}"
+#  loop_control:
+#    loop_var: item
