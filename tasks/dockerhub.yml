@@ -9,5 +9,5 @@
 
 - name: Display extracted subentries
   debug:
-    msg: "Registry: {{ item.key }} - Image: {{ item.value }}"
+    msg: "Registry: {{ item.key }} - Image: {{ item.value.image }}:{{ item.value.tag }}"
   loop: "{{ registry_images }}"
