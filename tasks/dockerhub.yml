@@ -2,7 +2,6 @@
   ansible.builtin.set_fact:
     json_content: "{{ lookup('file','vars/containers.dockerhub.json') }}"
 
-- name: Extract registry and image names
-  debug:
-    msg: "{{ item.registry }}"
-  loop: "{{ json_content | flatten}}"
+- name: Create interfaces Dictionary
+  set_fact:
+    images: "{{ json_content.parsed.images }}"
