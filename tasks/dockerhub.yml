@@ -1,6 +1,6 @@
 - name: load image list
   ansible.builtin.set_fact:
-    images: "{{ lookup('file','vars/containers.dockerhub.json') | b64decode | from_json }}"
+    images: "{{ lookup('file','vars/containers.dockerhub.json') | from_json }}"
   
 - name: retrieve all registries
   set_fact:
