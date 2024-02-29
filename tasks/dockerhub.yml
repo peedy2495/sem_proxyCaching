@@ -2,6 +2,9 @@
   ansible.builtin.set_fact:
     json_content: "{{ lookup('file','vars/containers.dockerhub.json') | from_json }}"
 
+- debug:
+    msg: "{{ json_content | flatten(levels=1) }}"
+
 - name: Extract registry and image names
   debug:
     msg: "{{ item.registry }}/ {{ item.image }}"
