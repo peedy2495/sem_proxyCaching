@@ -5,3 +5,6 @@
 - name: Create interfaces Dictionary
   set_fact:
     images: "{{ json_content.parsed.images }}"
+
+- debug:
+    var: images
