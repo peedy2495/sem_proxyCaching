@@ -8,7 +8,7 @@
   pre_tasks:
     - name: import repositories
       ansible.builtin.set_fact:
-        nexusRepos: "{{ lookup('file','vars/nexus_repos.json') | from_json }}"
+        nexusRepos: "{{ lookup('file','files/nexus_repos.json') | from_json }}"
 
   tasks:
     - name: load globals
@@ -19,5 +19,5 @@
       ansible.builtin.import_role:
         name: ansible-nexus-repositories
     
-    - name: dockerhub - pull images
-      ansible.builtin.import_tasks: tasks/dockerhub.yml
+    - name: containers - pull images
+      ansible.builtin.import_tasks: tasks/containers.yml

@@ -1,0 +1,3 @@
+proxyPorts:
+  dockerhub: 5000
+  quai: 5001
