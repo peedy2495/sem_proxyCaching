@@ -7,7 +7,7 @@
 
 - name: build daemon.json for insecure registries
   set_fact:
-    insecureString: "{{ insecureString + [item.docker.httpPort] }}"
+    insecureString: "{{ insecureString + ['\"' + item.docker.httpPort + '\"'] }}"
   #debug:
   #  msg: "{{ item.docker.httpPort }}"
   loop: "{{ nexusRepos }}"
