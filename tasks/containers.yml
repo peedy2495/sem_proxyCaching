@@ -1,6 +1,6 @@
 - name: Load container list
   ansible.builtin.set_fact:
-    containers: "{{ lookup('file','vars/containers.json') }}"
+    containers: "{{ lookup('file','files/containers.json') }}"
 
 - name: Caching container images
   command: "docker pull {{ nexusProxyIP }}:{{item.0.registry.proxyport}}/{{ item.1 }}"
