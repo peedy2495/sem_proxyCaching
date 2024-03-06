@@ -14,7 +14,7 @@
   loop_control:
     label: "{{ item.docker.name }}"
 
-  debug:
+- debug:
     msg: "{{ insecureString }}"
 
 #- name: docker-ce - configure insecure registries
