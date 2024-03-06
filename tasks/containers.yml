@@ -8,7 +8,7 @@
 - name: build daemon.json for insecure registries
   #insecureString: "{{ insecureString + }}"
   debug:
-    msg: "{{ item.0.docker.httpPort }}"
+    msg: "{{ item.0.httpPort }}"
   with_subelements:
     - "{{ nexusRepos }}"
     - docker
