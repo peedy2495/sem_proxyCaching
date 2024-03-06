@@ -47,5 +47,54 @@
     "routingRuleName": null,
     "format": "docker",
     "type": "proxy"
+  },
+  {
+    "name": "quai.io",
+    "url": "http://192.168.123.180:8081/repository/quai.io",
+    "online": true,
+    "storage": {
+      "blobStoreName": "containers",
+      "strictContentTypeValidation": true,
+      "writePolicy": "ALLOW"
+    },
+    "cleanup": null,
+    "docker": {
+      "v1Enabled": false,
+      "forceBasicAuth": false,
+      "httpPort": 5001,
+      "httpsPort": null,
+      "subdomain": null
+    },
+    "dockerProxy": {
+      "indexType": "REGISTRY",
+      "indexUrl": null,
+      "cacheForeignLayers": false,
+      "foreignLayerUrlWhitelist": []
+    },
+    "proxy": {
+      "remoteUrl": "https://quai.io",
+      "contentMaxAge": 1440,
+      "metadataMaxAge": 1440
+    },
+    "negativeCache": {
+      "enabled": true,
+      "timeToLive": 1440
+    },
+    "httpClient": {
+      "blocked": false,
+      "autoBlock": true,
+      "connection": {
+        "retries": null,
+        "userAgentSuffix": null,
+        "timeout": null,
+        "enableCircularRedirects": false,
+        "enableCookies": false,
+        "useTrustStore": false
+      },
+      "authentication": null
+    },
+    "routingRuleName": null,
+    "format": "docker",
+    "type": "proxy"
   }
 ]
