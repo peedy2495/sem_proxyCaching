@@ -12,7 +12,7 @@
   #  msg: "{{ item.docker.httpPort }}"
   loop: "{{ nexusRepos }}"
   loop_control:
-    label: "{{ item.docker.name }}"
+    label: "{{ item.name }}"
 
 - debug:
     msg: "{{ insecureString }}"
