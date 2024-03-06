@@ -5,7 +5,7 @@
       "proxyport" : "5000"
     },
     "images": [
-      "library/postgresql:14", 
+      "bitnami/postgresql:14", 
       "library/ubuntu:22.04"
     ]
   },

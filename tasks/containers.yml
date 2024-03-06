@@ -6,15 +6,15 @@
     insecureString: []
 
 - name: build daemon.json for insecure registries
-  #insecureString: "{{ insecureString + }}"
-  debug:
-    msg: "{{ item.docker.httpPort }}"
+  insecureString: "{{ insecureString + item.docker.httpPort }}"
+  #debug:
+  #  msg: "{{ item.docker.httpPort }}"
   loop: "{{ nexusRepos }}"
   loop_control:
-    label: "iterating"
+    label: "{{ item.docker.name }}"
 
-#  debug:
-#    msg: "{{ insecureString }}"
+  debug:
+    msg: "{{ insecureString }}"
 
 #- name: docker-ce - configure insecure registries
 #  ansible.builtin.template:
