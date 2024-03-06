@@ -8,10 +8,8 @@
 - name: build daemon.json for insecure registries
   #insecureString: "{{ insecureString + }}"
   debug:
-    msg: "{{ item.0.httpPort }}"
-  with_subelements:
-    - "{{ nexusRepos }}"
-    - docker
+    msg: "{{ item.docker.httpPort }}"
+  loop: "{{ nexusRepos }}"
   loop_control:
     label: "iterating"
 
