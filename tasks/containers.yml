@@ -16,29 +16,29 @@
 - debug:
     msg: "{{ insecureString}}"
 
-#- name: docker-ce - configure insecure registries
-#  ansible.builtin.template:
-#    src: daemon.json.j2
-#    dest: /etc/docker/daemon.json
-#    owner: root
-#    group: root
-#    mode: 0644
-#    force: yes
-#
-#- name: docker-ce - restart service
-#  systemd:
-#    name: docker
-#    state: restarted
-#
-#- name: Load container list
-#  ansible.builtin.set_fact:
-#    containers: "{{ lookup('file','files/containers.json') }}"
-#
-#- name: Caching container images
-#  command: "docker pull {{ nexusIP }}:{{item.0.registry.proxyport}}/{{ item.1 }}"
-#   # msg: "Registry: {{ item.0.registry.name }}, Image: {{ item.1 }}"
-#  with_subelements:
-#    - "{{ containers }}"
-#    - images
-#  loop_control:
-#    label: "Image: {{ item.1 }} via proxy from {{ item.0.registry.name }} "
+- name: docker-ce - configure insecure registries
+  ansible.builtin.template:
+    src: daemon.json.j2
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: root
+    mode: 0644
+    force: yes
+
+- name: docker-ce - restart service
+  systemd:
+    name: docker
+    state: restarted
+
+- name: Load container list
+  ansible.builtin.set_fact:
+    containers: "{{ lookup('file','files/containers.json') }}"
+
+- name: Caching container images
+  command: "docker pull {{ nexusIP }}:{{item.0.registry.proxyport}}/{{ item.1 }}"
+  # msg: "Registry: {{ item.0.registry.name }}, Image: {{ item.1 }}"
+  with_subelements:
+    - "{{ containers }}"
+    - images
+  loop_control:
+    label: "Image: {{ item.1 }} via proxy from {{ item.0.registry.name }} "
