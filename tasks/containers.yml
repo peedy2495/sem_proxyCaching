@@ -8,8 +8,6 @@
 - name: build daemon.json for insecure registries
   set_fact:
     insecureString: "{{ insecureString + [ {nexusIP: item.docker.httpPort} ] }}"
-  #debug:
-  #  msg: "{{ item.docker.httpPort }}"
   loop: "{{ nexusRepos }}"
   loop_control:
     label: "{{ item.name }}"
@@ -17,14 +15,14 @@
 - debug:
     msg: "{{ insecureString }}"
 
-#- name: docker-ce - configure insecure registries
-#  ansible.builtin.template:
-#    src: daemon.json.j2
-#    dest: /etc/docker/daemon.json
-#    owner: root
-#    group: root
-#    mode: 0644
-#    force: yes
+- name: docker-ce - configure insecure registries
+  ansible.builtin.template:
+    src: daemon.json.j2
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: root
+    mode: 0644
+    force: yes
 
 - name: Load container list
   ansible.builtin.set_fact:
