@@ -6,11 +6,12 @@
     insecureString: []
     concat: ""
 
-- name: build daemon.json for insecure registries
-  set_fact:
-    concat: "{{ nexusIP }}:{{ item.docker.httpPort }}"
-    insecureString: "{{ insecureString + [ concat ] }}"
-    cacheable: yes
+- mame: make daemon.json ciontent
+  block:
+    - set_fact:
+        concat: "{{ nexusIP }}:{{ item.docker.httpPort }}"
+    - set_fact:
+        insecureString: "{{ insecureString + [ concat ] }}"
   loop: "{{ nexusRepos }}"
   loop_control:
     label: "{{ item.name }}"
