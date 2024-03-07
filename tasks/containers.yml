@@ -24,6 +24,11 @@
     mode: 0644
     force: yes
 
+- name: docker-ce - restart service
+  systemd:
+    name: dockerd
+    state: restarted
+
 - name: Load container list
   ansible.builtin.set_fact:
     containers: "{{ lookup('file','files/containers.json') }}"
