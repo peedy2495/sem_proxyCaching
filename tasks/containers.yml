@@ -7,11 +7,8 @@
     concat: ""
 
 - name: make daemon.json ciontent
-  block:
-    - set_fact:
-        concat: "{{ nexusIP }}:{{ item.docker.httpPort }}"
-    - set_fact:
-        insecureString: "{{ insecureString + [ nexusIP + ':' + item.docker.httpPort ] }}"
+  set_fact:
+    insecureString: "{{ insecureString + [ nexusIP + ':' + item.docker.httpPort ] }}"
   loop: "{{ nexusRepos }}"
   loop_control:
     label: "{{ item.name }}"
