@@ -4,7 +4,7 @@
 
 - ansible.builtin.set_fact:
     insecureString: []
-    concat: ""
+    xconcat: ""
 
 - name: build daemon.json for insecure registries
   set_fact:
