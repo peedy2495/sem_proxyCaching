@@ -12,9 +12,6 @@
   loop_control:
     label: "{{ item.name }}"
 
-- debug:
-    msg: "{{ insecureString }}"
-
 - name: docker-ce - configure insecure registries
   ansible.builtin.template:
     src: daemon.json.j2
