@@ -4,12 +4,13 @@
 
 - ansible.builtin.set_fact:
     insecureString: []
-    xconcat: ""
+    concat: ""
 
 - name: build daemon.json for insecure registries
   set_fact:
-    xconcat: "{{ nexusIP }}:{{ item.docker.httpPort }}"
-    insecureString: "{{ insecureString + [ xconcat ] }}"
+    concat: "{{ nexusIP }}:{{ item.docker.httpPort }}"
+    insecureString: "{{ insecureString + [ concat ] }}"
+    cacheable: yes
   loop: "{{ nexusRepos }}"
   loop_control:
     label: "{{ item.name }}"
