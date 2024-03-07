@@ -25,10 +25,14 @@
     mode: 0644
     force: yes
 
+- name: docker-ce - correct quotes in configure
+  command: sed -i "s/'/\"/g" /etc/docker/daemon.json
+
 - name: docker-ce - restart service
   systemd:
     name: docker
     state: restarted
+    daemon_reload: yes
 
 - name: Load container list
   ansible.builtin.set_fact:
