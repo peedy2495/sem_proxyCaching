@@ -2,10 +2,14 @@
   ansible.builtin.set_fact:
     nexusRepos: "{{ lookup('file','files/nexus_repos.json') }}"
 
+- ansible.builtin.set_fact:
+    insecureString: []
+    concat: ""
+
 - name: build daemon.json for insecure registries
   set_fact:
-    concat: "{{ nexusIP }}:{{ item.docker.httpPort | default('')}}"
-    insecureString: "{{ insecureString + [ concat ] | default([])}}"
+    concat: "{{ nexusIP }}:{{ item.docker.httpPort }}"
+    insecureString: "{{ insecureString + [ concat ] }}"
   loop: "{{ nexusRepos }}"
   loop_control:
     label: "{{ item.name }}"
