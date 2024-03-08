@@ -53,7 +53,7 @@
     "url": "http://192.168.123.180:8081/repository/quai.io",
     "online": true,
     "storage": {
-      "blobStoreName": "containers",
+      "blobStoreName": "container-quai",
       "strictContentTypeValidation": true,
       "writePolicy": "ALLOW"
     },
