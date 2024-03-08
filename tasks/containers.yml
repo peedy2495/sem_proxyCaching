@@ -36,8 +36,8 @@
     containers: "{{ lookup('file','files/containers.json') }}"
 
 - name: Caching container images
-  command: "docker pull {{ nexusIP }}:{{item.0.registry.proxyport}}/{{ item.1 }}"
-  # msg: "Registry: {{ item.0.registry.name }}, Image: {{ item.1 }}"
+  debug:
+    msg: "docker pull {{ nexusIP }}:{{item.0.registry.proxyport}}/{{ item.1 }}"
   with_subelements:
     - "{{ containers }}"
     - images
