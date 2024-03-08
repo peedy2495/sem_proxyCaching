@@ -49,11 +49,11 @@
     "type": "proxy"
   },
   {
-    "name": "quai.io",
-    "url": "http://192.168.123.180:8081/repository/quai.io",
+    "name": "quay.io",
+    "url": "http://192.168.123.180:8081/repository/quay.io",
     "online": true,
     "storage": {
-      "blobStoreName": "container-quai",
+      "blobStoreName": "containers",
       "strictContentTypeValidation": true,
       "writePolicy": "ALLOW"
     },
@@ -72,7 +72,7 @@
       "foreignLayerUrlWhitelist": []
     },
     "proxy": {
-      "remoteUrl": "https://quai.io",
+      "remoteUrl": "https://quay.io/",
       "contentMaxAge": 1440,
       "metadataMaxAge": 1440
     },
