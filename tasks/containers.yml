@@ -13,9 +13,6 @@
   loop_control:
     label: "{{ item.name }}"
 
-- debug:
-    msg: "{{ insecureString}}"
-
 - name: docker-ce - configure insecure registries
   ansible.builtin.template:
     src: daemon.json.j2
@@ -25,7 +22,7 @@
     mode: 0644
     force: yes
 
-- name: docker-ce - correct quotes in configure
+- name: docker-ce - correct quotes in daemon config
   command: sed -i "s/'/\"/g" /etc/docker/daemon.json
 
 - name: docker-ce - restart service
@@ -39,7 +36,7 @@
     containers: "{{ lookup('file','files/containers.json') }}"
 
 - name: Caching container images
-  command: "docker pull {{ nexusIP }}:{{item.0.registry.proxyport}}/{{ item.1 }}"
+  command: "docker pull {{ nexusIP }}:{{item.0.registry.proxyport}}:{{ item.1 }}"
   # msg: "Registry: {{ item.0.registry.name }}, Image: {{ item.1 }}"
   with_subelements:
     - "{{ containers }}"
