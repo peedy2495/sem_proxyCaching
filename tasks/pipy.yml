@@ -16,6 +16,6 @@
 
 - name: pipy - install requirements
   pip:
-    requirements: "{{ item }}"
+    requirements: "{{ item.path }}"
   loop: requirements 
 
