@@ -1,0 +1,15 @@
+- name: pipy - find all requirements
+  find:
+    paths: files/pipy
+    file_type: file
+    recurse: yes
+  register: requirements
+
+- debug:
+    var: requirements
+
+- name: pipy - install requirements
+  pip:
+    requirements: "{{ item }}"
+  loop: requirements 
+

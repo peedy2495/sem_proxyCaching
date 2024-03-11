@@ -21,3 +21,6 @@
     
     - name: containers - pull images
       ansible.builtin.import_tasks: tasks/containers.yml
+
+    - name: pypi - pull requirements
+      ansible.builtin.import_tasks: tasks/pipy.yml
