@@ -4,6 +4,7 @@
     file_type: file
     recurse: yes
   register: requirements
+  delegate_to: localhost
 
 - debug:
     var: requirements
