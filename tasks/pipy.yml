@@ -1,6 +1,6 @@
 - name: pipy - find all requirements
   find:
-    paths: "{{ role_path }}/files/pipy"
+    paths: "{{ playbook_dir }}/files/pipy"
     file_type: file
     recurse: yes
   register: requirements
