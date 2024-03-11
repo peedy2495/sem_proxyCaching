@@ -1,10 +1,15 @@
+- name: pipy - copy requirements
+  # necessary, because of permission probs in container runtimes
+  copy: 
+    src: files/pipy
+    dest: /tmp/
+
 - name: pipy - find all requirements
   find:
-    paths: "{{ playbook_dir }}/files/pipy"
+    paths: "/tmp/pipy"
     file_type: file
     recurse: yes
   register: requirements
-  delegate_to: localhost
 
 - debug:
     var: requirements
