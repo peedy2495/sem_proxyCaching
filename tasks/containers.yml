@@ -8,7 +8,7 @@
 
 - name: make daemon.json ciontent
   set_fact:
-    insecureString: "{{ insecureString + [ nexusIP + ':' + item.docker.httpPort|string ] }}"
+    insecureString: "{{ insecureString + [ nexus_host + ':' + item.docker.httpPort|string ] }}"
   loop: "{{ nexusRepos }}"
   loop_control:
     label: "{{ item.name }}"
@@ -36,7 +36,7 @@
     containers: "{{ lookup('file','files/containers.json') }}"
 
 - name: Caching container images
-  shell: "docker pull {{ nexusIP }}:{{item.0.registry.proxyport}}/{{ item.1 }}"
+  shell: "docker pull {{ nexus_host }}:{{item.0.registry.proxyport}}/{{ item.1 }}"
   with_subelements:
     - "{{ containers }}"
     - images
